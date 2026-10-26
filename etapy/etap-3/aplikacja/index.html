@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Domowy przepiśnik</title>
+  <link rel="stylesheet" href="styl.css">
+</head>
+<body>
+  <!--
+    Domowy przepiśnik — etap 3: spis z wyszukiwarką, strona przepisu, kuchnia i druk.
+    Przepisy: ../materialy/przepisy.js (folder materialy leży obok folderu aplikacja).
+    Widoki (adres po #): #spis (domyślny) i #przepis/<id>. Treść wstawia przepisnik.js.
+  -->
+
+  <!-- Komunikat, gdy brakuje przepisów albo adres jest zły -->
+  <div id="komunikat" class="komunikat" role="alert" hidden></div>
+
+  <!-- ===== Spis przepisów (etap 2) ===== -->
+  <main id="spis" class="widok" hidden>
+    <div class="ksiazka">
+      <section class="strona strona--spis" aria-labelledby="spis-tytul">
+        <p class="strona__gora"><span>Spis treści</span><span>1</span></p>
+        <h1 id="spis-tytul" class="strona__tytul">Domowy przepiśnik</h1>
+        <p id="spis-licznik" class="strona__pod"></p>
+
+        <div class="szukaj">
+          <label class="wizualnie-ukryte" for="szukaj">Szukaj przepisu</label>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+          <input id="szukaj" type="search" placeholder="Szukaj przepisu…" autocomplete="off" spellcheck="false">
+        </div>
+        <div id="rozdzialy" class="rozdzialy" role="group" aria-label="Rozdziały"></div>
+
+        <p id="spis-wynik" class="spis__wynik" aria-live="polite"></p>
+        <div id="spis-lista"></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ===== Strona przepisu (etap 1) ===== -->
+  <main id="przepis" class="widok" hidden>
+    <nav class="pasek" aria-label="Spis i narzędzia">
+      <a class="pasek__wroc" href="#spis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 18l-6-6 6-6"/></svg>Spis przepisów</a>
+
+      <!-- Kuchnia i druk (etap 3) -->
+      <div class="pasek__narzedzia">
+        <div class="przelicznik" role="group" aria-label="Przelicznik porcji">
+          <span class="przelicznik__napis" aria-hidden="true">Porcje</span>
+          <button type="button" class="przycisk" data-mnoznik="0.5" aria-pressed="false" aria-label="×½, połowa porcji">×½</button>
+          <button type="button" class="przycisk" data-mnoznik="1" aria-pressed="true" aria-label="×1, porcje jak w przepisie">×1</button>
+          <button type="button" class="przycisk" data-mnoznik="2" aria-pressed="false" aria-label="×2, podwójne porcje">×2</button>
+        </div>
+        <button type="button" id="duze-litery" class="przycisk" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 19 8.5 5 14 19M5 14.5h7"/><path d="M15 19l3-7.5 3 7.5M16.1 16.5h3.8"/></svg>Duże litery</button>
+        <button type="button" id="drukuj" class="przycisk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 9V3h10v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M7 14h10v7H7z"/></svg>Drukuj</button>
+      </div>
+    </nav>
+
+    <div class="ksiazka">
+      <article class="strona strona--przepis" aria-labelledby="przepis-tytul">
+        <p class="strona__gora"><span id="przepis-rozdzial"></span><span id="przepis-numer"></span></p>
+        <h1 id="przepis-tytul" class="strona__tytul" tabindex="-1"></h1>
+        <p id="przepis-podtytul" class="strona__pod"></p>
+        <p id="przepis-plakietki" class="plakietki">
+          <span id="przepis-porcje"></span>
+          <span id="przepis-czas"></span>
+          <span id="przepis-trudnosc"></span>
+        </p>
+        <img id="przepis-zdjecie" class="strona__zdjecie" alt="" hidden>
+
+        <div class="kolumny">
+          <section class="kolumna" aria-labelledby="naglowek-skladniki">
+            <h2 id="naglowek-skladniki">Składniki</h2>
+            <ul id="przepis-skladniki" class="skladniki" role="list"></ul>
+          </section>
+          <section class="kolumna" aria-labelledby="naglowek-przygotowanie">
+            <h2 id="naglowek-przygotowanie">Przygotowanie</h2>
+            <ol id="przepis-kroki" class="kroki" role="list"></ol>
+          </section>
+        </div>
+
+        <footer id="przepis-stopka" class="strona__stopka">
+          <p id="przepis-skad" class="skad"></p>
+          <p id="przepis-notatki" class="notatki"></p>
+          <p id="przepis-niepewne" class="legenda" hidden><mark class="niepewne">[?]</mark> Tego słowa nie udało się odczytać z&nbsp;kartki. Napisz Claude'owi, co tam jest.</p>
+        </footer>
+      </article>
+    </div>
+  </main>
+
+  <noscript><p class="komunikat">Ta strona potrzebuje JavaScriptu. Otwórz ją w&nbsp;Chrome, Edge albo Safari.</p></noscript>
+
+  <!-- Najpierw przepisy (dane), potem silnik strony -->
+  <script src="../materialy/przepisy.js"></script>
+  <script src="przepisnik.js"></script>
+</body>
+</html>

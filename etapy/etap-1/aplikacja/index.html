@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Domowy przepiśnik</title>
+  <link rel="stylesheet" href="styl.css">
+</head>
+<body>
+  <!--
+    Domowy przepiśnik — etap 1: strona przepisu w układzie z rysunku.
+    Przepisy: ../materialy/przepisy.js (folder materialy leży obok folderu aplikacja).
+    Bez adresu po # widać pierwszy przepis; inny: #przepis/<id>. Treść wstawia przepisnik.js.
+  -->
+
+  <!-- Komunikat, gdy brakuje przepisów albo adres jest zły -->
+  <div id="komunikat" class="komunikat" role="alert" hidden></div>
+
+  <!-- ===== Strona przepisu (etap 1) ===== -->
+  <main id="przepis" class="widok" hidden>
+    <div class="ksiazka">
+      <article class="strona strona--przepis" aria-labelledby="przepis-tytul">
+        <p class="strona__gora"><span id="przepis-rozdzial"></span><span id="przepis-numer"></span></p>
+        <h1 id="przepis-tytul" class="strona__tytul" tabindex="-1"></h1>
+        <p id="przepis-podtytul" class="strona__pod"></p>
+        <p id="przepis-plakietki" class="plakietki">
+          <span id="przepis-porcje"></span>
+          <span id="przepis-czas"></span>
+          <span id="przepis-trudnosc"></span>
+        </p>
+        <img id="przepis-zdjecie" class="strona__zdjecie" alt="" hidden>
+
+        <div class="kolumny">
+          <section class="kolumna" aria-labelledby="naglowek-skladniki">
+            <h2 id="naglowek-skladniki">Składniki</h2>
+            <ul id="przepis-skladniki" class="skladniki" role="list"></ul>
+          </section>
+          <section class="kolumna" aria-labelledby="naglowek-przygotowanie">
+            <h2 id="naglowek-przygotowanie">Przygotowanie</h2>
+            <ol id="przepis-kroki" class="kroki" role="list"></ol>
+          </section>
+        </div>
+
+        <footer id="przepis-stopka" class="strona__stopka">
+          <p id="przepis-skad" class="skad"></p>
+          <p id="przepis-notatki" class="notatki"></p>
+          <p id="przepis-niepewne" class="legenda" hidden><mark class="niepewne">[?]</mark> Tego słowa nie udało się odczytać z&nbsp;kartki. Napisz Claude'owi, co tam jest.</p>
+        </footer>
+      </article>
+    </div>
+  </main>
+
+  <noscript><p class="komunikat">Ta strona potrzebuje JavaScriptu. Otwórz ją w&nbsp;Chrome, Edge albo Safari.</p></noscript>
+
+  <!-- Najpierw przepisy (dane), potem silnik strony -->
+  <script src="../materialy/przepisy.js"></script>
+  <script src="przepisnik.js"></script>
+</body>
+</html>

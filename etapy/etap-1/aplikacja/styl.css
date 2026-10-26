@@ -1,0 +1,119 @@
+/*
+  Domowy przepiśnik — wygląd (etap 1).
+  Strona przepisu wygląda jak rysunek „po” ze strony agenciai.org: biała kartka z cieniem na ciepłym tle,
+  mały szary wiersz z rozdziałem i numerem strony, tytuł Georgia, plakietki i dwie kolumny.
+  Tylko czcionki systemowe i żadnych adresów z internetu, więc strona działa otwarta z dysku.
+*/
+
+/* ===== Kolory i czcionki ===== */
+:root {
+  --tlo: #EAE2D3;              /* ciepłe tło pod kartką */
+  --tlo-jasne: #F5F0E6;
+  --kartka: #FFFFFF;
+  --granat: #1F2A44;           /* tytuły */
+  --tekst: #334155;            /* zwykły tekst */
+  --szary: #64748B;            /* podtytuł, mały wiersz u góry */
+  --linia: #E2E8F0;            /* cienkie linie */
+  --mgla: #DBEAFE;             /* tło plakietek */
+  --niebieski: #1D4ED8;        /* plakietki i przyciski */
+  --niebieski-ciemny: #1E3A8A;
+  --zolty: #FEF3C7;            /* [?] — słowo nieodczytane z kartki */
+  --brazowy: #92400E;
+  --cien: 0 1px 2px rgba(15, 23, 42, .06), 0 22px 48px -22px rgba(15, 23, 42, .38);
+  --kroj-tytul: Georgia, "Times New Roman", serif;
+  --kroj-tekst: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+/* ===== Podstawy ===== */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--tlo) radial-gradient(120% 90% at 25% 0%, var(--tlo-jasne), var(--tlo) 70%) fixed;
+  color: var(--tekst);
+  font: 400 17px/1.6 var(--kroj-tekst);
+}
+@media screen and (min-width: 768px) { body { font-size: 18px; } }
+[hidden] { display: none !important; }
+img { max-width: 100%; }
+svg { flex: none; }
+a { color: var(--niebieski); }
+:focus-visible { outline: 3px solid var(--niebieski); outline-offset: 3px; border-radius: 4px; }
+.wizualnie-ukryte { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* ===== Komunikat: brak przepisów albo zły adres ===== */
+.komunikat { max-width: 640px; margin: 40px 16px; padding: 20px 24px; border-radius: 12px; background: #fff;
+  box-shadow: var(--cien); color: var(--granat); }
+@media screen and (min-width: 672px) { .komunikat { margin: 40px auto; } }
+.komunikat p { margin: 0 0 8px; }
+.komunikat p:last-child { margin: 0; }
+.komunikat a { font-weight: 600; }
+
+/* ===== Kartka książki ===== */
+.ksiazka { position: relative; max-width: 852px; margin: 0 auto; padding: 0 16px 56px; }
+.widok > .ksiazka:first-child { padding-top: 24px; }   /* kartka bez paska nad nią */
+@media screen and (min-width: 640px) { .widok > .ksiazka:first-child { padding-top: 48px; } }
+.strona { position: relative; padding: 26px 20px 24px; border-radius: 10px; background: var(--kartka);
+  box-shadow: var(--cien); }
+@media screen and (min-width: 640px) { .strona { padding: 48px 56px 42px; } }
+/* Druga kartka pod spodem: na szerokim ekranie widać jej brzeg, jak w książce */
+@media screen and (min-width: 900px) {
+  .strona::before { content: ""; position: absolute; z-index: -1; top: 12px; right: 10px; bottom: 4px; left: 10px;
+    border-radius: 10px; background: #FBF8F2; box-shadow: 0 16px 34px -20px rgba(60, 40, 10, .45);
+    transform: rotate(-1.1deg); }
+}
+
+/* Mały szary wiersz u góry: „Rozdział 3 · Obiady” i numer strony */
+.strona__gora { display: flex; justify-content: space-between; gap: 16px; margin: 0; color: var(--szary);
+  font-size: .8em; font-weight: 600; letter-spacing: .03em; font-variant-numeric: tabular-nums; }
+.strona__tytul { margin: .55em 0 .2em; color: var(--granat); font: 700 1.75em/1.1 var(--kroj-tytul);
+  letter-spacing: -.01em; overflow-wrap: break-word; }
+@media screen and (min-width: 640px) { .strona__tytul { font-size: 2.75em; } }
+.strona__tytul:focus { outline: none; }
+.strona__pod { margin: 0 0 1em; color: var(--szary); font-size: 1.1em; }
+.strona__pod:empty { display: none; }
+.strona__pod:empty + .plakietki { margin-top: .9em; }   /* bez podtytułu plakietki nie kleją się do tytułu */
+
+/* Plakietki: porcje, czas, trudność */
+.plakietki { display: flex; flex-wrap: wrap; gap: .5em; margin: 0 0 1.8em; }
+.plakietki span { padding: .38em .95em; border-radius: 999px; background: var(--mgla); color: var(--niebieski);
+  font-size: .85em; font-weight: 600; white-space: nowrap; }
+.plakietki span:empty { display: none; }
+
+.strona__zdjecie { display: block; width: 100%; max-height: 380px; margin: 0 0 1.8em; border-radius: 8px;
+  object-fit: cover; }
+
+/* Dwie kolumny: składniki i przygotowanie; na wąskim ekranie jedna */
+.kolumny { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 2.6em; align-items: start; }
+@media screen and (max-width: 639px) { .kolumny { grid-template-columns: minmax(0, 1fr); gap: 1.8em; } }
+.kolumna h2 { margin: 0 0 .7em; color: var(--granat); font: 700 1.3em/1.2 var(--kroj-tytul); }
+.kolumna h2::after { content: ""; display: block; width: 40px; height: 3px; margin-top: .45em; border-radius: 3px;
+  background: var(--niebieski); opacity: .3; }
+
+.skladniki, .kroki { margin: 0; padding: 0; list-style: none; }
+.skladniki li { position: relative; padding: .5em 0 .5em 1.15em; border-bottom: 1px solid var(--linia); }
+.skladniki li:last-child { border-bottom: 0; }
+.skladniki li::before { content: ""; position: absolute; top: 1.1em; left: .1em; width: .42em; height: .42em;
+  border-radius: 50%; background: var(--niebieski); opacity: .5; }
+.ilosc { color: var(--granat); font-weight: 700; }
+
+.kroki { counter-reset: krok; }
+.kroki li { position: relative; min-height: 2em; margin-bottom: .95em; padding-left: 2.7em; counter-increment: krok; }
+.kroki li:last-child { margin-bottom: 0; }
+.kroki li::before { content: counter(krok); position: absolute; top: -.08em; left: 0; display: grid;
+  place-items: center; width: 1.9em; height: 1.9em; border-radius: 50%; background: var(--mgla);
+  color: var(--niebieski); font-size: .92em; font-weight: 700; }
+
+/* Stopka: skąd przepis i notatki */
+.strona__stopka { margin-top: 2.2em; padding-top: 1.2em; border-top: 1px solid var(--linia); }
+.skad { margin: 0; }
+.skad__etykieta { color: var(--szary); font-weight: 600; }
+.notatki { margin: .45em 0 0; color: #475569; font: italic 1.12em/1.5 var(--kroj-tytul); }
+.skad:empty, .notatki:empty { display: none; }
+.skad:empty + .notatki { margin-top: 0; }
+
+/* [?] — słowo, którego nie udało się odczytać z kartki */
+.niepewne { padding: 0 .25em; border-radius: 4px; background: var(--zolty); color: var(--brazowy); font-weight: 700; }
+.legenda { margin: .9em 0 0; color: var(--szary); font-size: .85em; }

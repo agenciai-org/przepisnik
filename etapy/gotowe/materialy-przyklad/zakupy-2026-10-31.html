@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lista zakupów · 31 października 2026</title>
+  <!--
+    Domowy przepiśnik — lista zakupów (jeden plik: wygląd i działanie w środku, bez adresów z internetu).
+    Zrobiona poleceniem /zakupy z materialy/przepisy.js: Pierogi babci Zosi i Placki ziemniaczane mamy, po 4 porcje.
+    Te same składniki (ta sama nazwa) zsumowane, pozycje ułożone według działów sklepu.
+  -->
+  <style>
+    :root {
+      --tlo: #EAE2D3; --tlo-jasne: #F5F0E6; --granat: #1F2A44; --tekst: #334155; --szary: #64748B;
+      --linia: #E2E8F0; --mgla: #DBEAFE; --niebieski: #1D4ED8; --zielony: #15803D;
+      --kroj-tytul: Georgia, "Times New Roman", serif;
+      --kroj-tekst: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+    body { margin: 0; min-height: 100vh; background: var(--tlo) radial-gradient(120% 90% at 25% 0%, var(--tlo-jasne), var(--tlo) 70%) fixed;
+      color: var(--tekst); font: 400 19px/1.5 var(--kroj-tekst); }
+    .kartka { max-width: 560px; margin: 16px; padding: 22px 20px 24px; border-radius: 12px; background: #fff;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, .06), 0 22px 48px -22px rgba(15, 23, 42, .38); }
+    @media (min-width: 592px) { .kartka { margin: 32px auto 48px; padding: 32px 36px 32px; } }
+
+    .gora { display: flex; justify-content: space-between; gap: 12px; margin: 0; color: var(--szary); font-size: .74em;
+      font-weight: 600; letter-spacing: .03em; }
+    h1 { margin: .35em 0 .1em; color: var(--granat); font: 700 2em/1.1 var(--kroj-tytul); }
+    .data { margin: 0 0 .8em; color: var(--szary); }
+    .przepisy { display: flex; flex-wrap: wrap; gap: .4em; margin: 0 0 1em; padding: 0; list-style: none; }
+    .przepisy li { padding: .3em .8em; border-radius: 999px; background: var(--mgla); color: var(--niebieski);
+      font-size: .78em; font-weight: 600; }
+    .stan { margin: 0 0 .4em; color: var(--granat); font-weight: 600; }
+
+    /* Dział sklepu: mały szary nagłówek z linią, jak rozdział w przepiśniku */
+    .dzial { margin-top: 1.3em; }
+    .dzial h2 { display: flex; align-items: center; gap: .7em; margin: 0 0 .2em; color: var(--szary); font-size: .74em;
+      font-weight: 600; letter-spacing: .03em; }
+    .dzial h2::after { content: ""; flex: 1; height: 1px; background: var(--linia); }
+    .dzial ul { margin: 0; padding: 0; list-style: none; }
+
+    /* Pozycja: duże pole do odhaczania i cały wiersz klikalny */
+    .pozycja { display: flex; align-items: flex-start; gap: 14px; min-height: 56px; padding: 12px 2px;
+      border-bottom: 1px solid var(--linia); cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .dzial li:last-child .pozycja { border-bottom: 0; }
+    .pozycja input { flex: none; width: 28px; height: 28px; margin: 0; accent-color: var(--zielony); cursor: pointer; }
+    .pozycja__tekst { padding-top: 1px; }
+    .ilosc { color: var(--granat); font-weight: 700; }
+    .na-co { display: block; color: var(--szary); font-size: .78em; }
+    .pozycja input:checked + .pozycja__tekst { color: var(--szary); text-decoration: line-through; }
+    .pozycja input:checked + .pozycja__tekst .ilosc { color: var(--szary); }
+    .pozycja input:focus-visible { outline: 3px solid var(--niebieski); outline-offset: 3px; }
+
+    .stopka { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;
+      margin-top: 1.4em; padding-top: 1em; border-top: 1px solid var(--linia); color: var(--szary); font-size: .78em; }
+    .stopka button { min-height: 44px; padding: 0 1.1em; border: 1px solid rgba(31, 42, 68, .16); border-radius: 999px;
+      background: #fff; color: var(--granat); font: 600 1em/1 var(--kroj-tekst); cursor: pointer; }
+    .stopka button:focus-visible { outline: 3px solid var(--niebieski); outline-offset: 3px; }
+    [hidden] { display: none !important; }
+
+    @media print {
+      body { background: #fff; font-size: 12pt; }
+      .kartka { max-width: none; margin: 0; padding: 0; box-shadow: none; }
+      .stan, .stopka button { display: none; }
+      .przepisy li { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .pozycja { min-height: 0; padding: 7px 2px; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main class="kartka">
+    <p class="gora"><span>Domowy przepiśnik</span></p>
+    <h1>Lista zakupów</h1>
+    <p class="data">sobota, 31 października 2026</p>
+    <ul class="przepisy" aria-label="Przepisy na tej liście">
+      <li>Pierogi babci Zosi · 4 porcje</li>
+      <li>Placki ziemniaczane mamy · 4 porcje</li>
+    </ul>
+    <p id="stan" class="stan" aria-live="polite" hidden></p>
+
+    <section class="dzial" aria-labelledby="dzial-1">
+      <h2 id="dzial-1">Warzywa i owoce</h2>
+      <ul>
+        <li><label class="pozycja"><input type="checkbox"><span class="pozycja__tekst"><span class="ilosc">2</span> cebule<span class="na-co">do pierogów i&nbsp;placków</span></span></label></li>
+        <li><label class="pozycja"><input type="checkbox"><span class="pozycja__tekst"><span class="ilosc">1,5&nbsp;kg</span> ziemniaków<span class="na-co">do pierogów i&nbsp;placków</span></span></label></li>
+      </ul>
+    </section>
+
+    <section class="dzial" aria-labelledby="dzial-2">
+      <h2 id="dzial-2">Nabiał i jajka</h2>
+      <ul>
+        <li><label class="pozycja"><input type="checkbox"><span class="pozycja__tekst"><span class="ilosc">2</span> jajka<span class="na-co">do pierogów i&nbsp;placków</span></span></label></li>
+        <li><label class="pozycja"><input type="checkbox"><span class="pozycja__tekst"><span class="ilosc">200&nbsp;g</span> kwaśnej śmietany 18%<span class="na-co">do placków</span></span></label></li>
+        <li><label class="pozycja"><input type="checkbox"><span class="pozycja__tekst"><span class="ilosc">2&nbsp;łyżki</span> masła<span class="na-co">do pierogów</span></span></label></li>
+        <li><label class="pozycja"><input type="checkbox"><span class="pozycja__tekst"><span class="ilosc">250&nbsp;g</span> twarogu półtłustego<span class="na-co">do pierogów</span></span></label></li>
+      </ul>
+    </section>
+
+    <section class="dzial" aria-labelledby="dzial-3">
+      <h2 id="dzial-3">Sypkie</h2>
+      <ul>
+        <li><label class="pozycja"><input type="checkbox"><span class="pozycja__tekst"><span class="ilosc">500&nbsp;g + 2&nbsp;łyżki</span> mąki pszennej<span class="na-co">do pierogów i&nbsp;placków</span></span></label></li>
+      </ul>
+    </section>
+
+    <section class="dzial" aria-labelledby="dzial-4">
+      <h2 id="dzial-4">Przyprawy</h2>
+      <ul>
+        <li><label class="pozycja"><input type="checkbox"><span class="pozycja__tekst">sól, pieprz<span class="na-co">bez ilości, do smaku</span></span></label></li>
+      </ul>
+    </section>
+
+    <section class="dzial" aria-labelledby="dzial-5">
+      <h2 id="dzial-5">Inne</h2>
+      <ul>
+        <li><label class="pozycja"><input type="checkbox"><span class="pozycja__tekst">olej do smażenia<span class="na-co">bez ilości, do placków</span></span></label></li>
+      </ul>
+    </section>
+
+    <div class="stopka">
+      <span>Zrobione w&nbsp;Domowym przepiśniku</span>
+      <button type="button" id="odznacz" hidden>Odznacz wszystko</button>
+    </div>
+  </main>
+
+  <script>
+    // Licznik „Zostało do kupienia” i zapamiętanie odhaczonych pozycji w tej przeglądarce (jeśli pozwala).
+    (function () {
+      "use strict";
+      var KLUCZ = "przepisnik-zakupy-2026-10-31-0900";
+      var pola = Array.prototype.slice.call(document.querySelectorAll(".pozycja input"));
+      var stan = document.getElementById("stan");
+      var odznacz = document.getElementById("odznacz");
+
+      // 1 pozycja, 2 pozycje, 5 pozycji
+      function pozycji(n) {
+        if (n === 1) return "pozycja";
+        var j = n % 10, d = n % 100;
+        return j >= 2 && j <= 4 && (d < 12 || d > 14) ? "pozycje" : "pozycji";
+      }
+
+      function pokazStan() {
+        var zostalo = pola.filter(function (p) { return !p.checked; }).length;
+        stan.textContent = zostalo === 0 ? "Wszystko kupione!" :
+          "Zostało do kupienia: " + zostalo + " " + pozycji(zostalo) + " z " + pola.length;
+        stan.hidden = false;
+        odznacz.hidden = zostalo === pola.length;
+      }
+
+      function zapisz() {
+        try {
+          localStorage.setItem(KLUCZ, JSON.stringify(pola.map(function (p) { return p.checked; })));
+        } catch (e) { /* bez zapamiętania */ }
+      }
+
+      try {
+        var zapisane = JSON.parse(localStorage.getItem(KLUCZ) || "[]");
+        pola.forEach(function (p, i) { p.checked = zapisane[i] === true; });
+      } catch (e) { /* zaczynamy od pustej listy */ }
+
+      pola.forEach(function (p) {
+        p.addEventListener("change", function () { zapisz(); pokazStan(); });
+      });
+      odznacz.addEventListener("click", function () {
+        pola.forEach(function (p) { p.checked = false; });
+        zapisz();
+        pokazStan();
+      });
+      pokazStan();
+    })();
+  </script>
+</body>
+</html>
