@@ -1,6 +1,6 @@
 # Kartki z przepisami
 
-Tu będą zdjęcia trzech odręcznych kartek z przepisami (dojdą w środę 28 października 2026):
+Zdjęcia trzech odręcznych kartek z przepisami (kartka z kleksem dojdzie w środę 28 października 2026):
 
 - `pierogi-babci-zosi.jpg` – lekcja M02-L01;
 - `sernik-cioci-heli.jpg` – lekcja M03-L04;

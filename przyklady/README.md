@@ -9,4 +9,4 @@ Materiały, które pokazujemy w lekcjach. Są w repozytorium do pobrania; do pra
 | `kartki/sernik-cioci-heli.jpg` | Druga kartka, „Sernik cioci Heli”: przenosisz jej zdjęcie z telefonu do pracowni. | M03-L04 |
 | `kartki/placki-ziemniaczane-mamy.jpg` | Kartka z kleksem przy ilości mąki: sprawdzasz, czy Claude zapyta, zamiast zgadywać. | M04-L01 |
 
-Zdjęcia kartek dojdą w środę 28 października 2026. Do tego czasu w folderze `kartki/` jest tylko krótki opis.
+Zdjęcie kartki z kleksem (`kartki/placki-ziemniaczane-mamy.jpg`) dojdzie w środę 28 października 2026.
