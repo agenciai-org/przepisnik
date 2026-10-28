@@ -42,8 +42,6 @@ Rozpoznaj z prośby; jeśli nie wiadomo, zapytaj: „Co udostępnić?” – ca�
 - Lista zakupów: weź najnowszy plik `materialy/zakupy-RRRR-MM-DD.html`; jeśli są różne listy z ostatnich dni, zapytaj
   którą. Lista ma jeden stały link: na telefonie wystarczy jedna zakładka, a nowa lista podmienia starą. Osobny link
   (plik `lista-zakupow-RRRR-MM-DD.html`) tylko wtedy, gdy kursant o niego poprosi (pytanie w kroku 5).
-  <!-- Uwaga autorów kursu: stały link do listy zakłada, że w „Share” działa przełącznik „Always share latest version”
-  (kto ma link, widzi najnowszą wersję). Potwierdzi to jeszcze próba w aplikacji. -->
 - Przepiśnik i przepis potrzebują strony `aplikacja/index.html`. Jeśli jej nie ma, powiedz, że najpierw trzeba
   zbudować przepiśnik (albo wstawić etap: `/przywroc-etap`), i zakończ.
 - Sprawdź `materialy/linki.md`: jeśli ten plik był już udostępniony, zapamiętaj jego link – w kroku 6 zaktualizujesz
@@ -282,8 +280,8 @@ Select-String -LiteralPath $CEL -Pattern '(src|href)="(?!#|data:)[^"]*"' -AllMat
 
 Powiedz dokładnie to:
 
-„Każdy, kto dostanie ten link, będzie mógł otworzyć stronę – od razu albo dopiero po założeniu bezpłatnego konta Claude
-i zalogowaniu się. Link można przesłać dalej, więc wysyłaj go tylko osobom, które mają zobaczyć tę stronę.”
+„Każdy, kto dostanie ten link, będzie mógł otworzyć stronę, także bez konta Claude i bez logowania. Link można
+przesłać dalej, więc wysyłaj go tylko osobom, które mają zobaczyć tę stronę.”
 
 Przy pierwszej publikacji dodaj: „Zaraz po publikacji stronę widzisz tylko Ty; innym udostępnisz ją przyciskiem
 „Share”.” i zapytaj: „Publikujemy?” – tak · jeszcze nie.
@@ -302,22 +300,24 @@ Bez wyraźnej zgody zakończ: plik zostaje w `materialy/udostepnione/`.
 - Plik składa się z części, które już znasz (szkielet, styl, dane, `podmiana.js`, silnik); długie linie
   `data:image/jpeg;base64,…` to zdjęcia z kroku 4. Jeśli narzędzie publikacji każe przeczytać plik, czytaj go
   fragmentami i nie przepisuj zdjęć do rozmowy.
+- Jeśli publikację zatrzyma tryb Auto („Blocked by auto mode”), powiedz to kursantowi jednym zdaniem i spróbuj jeszcze
+  raz.
 - Jeśli aplikacja nie może opublikować strony, powiedz to prosto. Plik zostaje w `materialy/udostepnione/`: można go
   otworzyć w przeglądarce, wydrukować albo zapisać jako PDF z okna drukowania przeglądarki.
 
 Podaj link i powiedz kursantowi:
 
 - „Kliknij link, żeby zobaczyć stronę.”
-- „Żeby inni mogli ją otworzyć: u góry strony kliknij „Share” (udostępnij), w „Who has access” (kto ma dostęp) wybierz
-  „Anyone with the link” (każdy, kto ma link), kliknij „Copy link” (kopiuj link) i wyślij link, np. e-mailem albo SMS-em.”
-- „Jeśli w „Share” widzisz przełącznik „Always share latest version” (zawsze najnowsza wersja), włącz go: po
-  aktualizacji ten sam link pokaże nową wersję.”
+- „Żeby inni mogli ją otworzyć: u góry strony kliknij „Share” (udostępnij). W „General access” (ogólny dostęp) zmień
+  „Only you” (tylko ja) na „Anyone with the link” (każdy, kto ma link) i potwierdź „Share publicly” (udostępnij
+  publicznie). Potem kliknij „Copy link” (kopiuj link) i wyślij link, np. e-mailem albo SMS-em.”
+- „Gdy zaktualizuję stronę, ten sam link pokaże nową wersję. Nie trzeba wysyłać go jeszcze raz.”
 - „Strona tylko dla Ciebie, np. lista na Twój telefon? Wtedy nic nie zmieniaj w „Share”: otwórz link na telefonie po
   zalogowaniu się na swoje konto Claude.”
-- „Wyłączenie linku: „Share” → „Only you” (tylko ja).”
+- „Wyłączenie linku: „Share” → „General access” → „Only you” (tylko ja).”
 
-Przy aktualizacji wystarczy jedno zdanie: „Strona pod linkiem jest zaktualizowana.” (i przypomnienie
-o „Always share latest version”, jeśli kursant nie widzi zmian).
+Przy aktualizacji wystarczy jedno zdanie: „Strona pod linkiem jest zaktualizowana.” Jeśli kursant nie widzi zmian,
+niech odświeży stronę na telefonie.
 
 ## Krok 7. Zapis linku
 
