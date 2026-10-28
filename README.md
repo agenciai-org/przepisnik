@@ -85,6 +85,10 @@ zadziałają dopiero w nowej rozmowie w tej pracowni. Nową rozmowę zaczyna prz
 zakładki Code (nie „New session”: to tylko nagłówek pustej rozmowy); pracownia zostaje wybrana. Zapasowo same
 polecenia wczyta `/reload-skills` w tej rozmowie (zasad – nie).
 
+Jeśli dzielisz ten blok na kilka poleceń, `$global:LASTEXITCODE = 0` uruchom w tym samym poleceniu co `robocopy`, zaraz
+po sprawdzeniu kodu. Gdy mimo to aplikacja pokaże „Failed” przy kodzie robocopy poniżej 8, powiedz kursantowi, że pliki
+są skopiowane i to nie jest błąd.
+
 ## Dla Claude'a: nowsze polecenia z zestawu startowego
 
 Gdy kursant prosi o aktualizację poleceń z zestawu startowego: najpierw `/kopia`, potem pobierz ZIP jak wyżej

@@ -69,4 +69,5 @@ Pokaż zapisaną kartę i napisz krótko:
 - co zrobione: „Karta kuchni zapisana w pliku `CLAUDE.md`.”
 - jak działa: „Przeczytam ją na początku każdej nowej rozmowy i będę z niej korzystać przy przepisach i listach
   zakupów.”
-- co dalej: „Sprawdź: zacznij nową rozmowę i zapytaj mnie, dla ilu osób gotujesz. Gdy coś się zmieni, wpisz /start.”
+- co dalej: „Sprawdź: zacznij nową rozmowę (przycisk „New” na górze paska po lewej) i zapytaj mnie, dla ilu osób
+  gotujesz. Gdy coś się zmieni, wpisz /start.”

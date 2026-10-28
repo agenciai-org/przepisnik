@@ -300,8 +300,9 @@ Bez wyraźnej zgody zakończ: plik zostaje w `materialy/udostepnione/`.
 - Plik składa się z części, które już znasz (szkielet, styl, dane, `podmiana.js`, silnik); długie linie
   `data:image/jpeg;base64,…` to zdjęcia z kroku 4. Jeśli narzędzie publikacji każe przeczytać plik, czytaj go
   fragmentami i nie przepisuj zdjęć do rozmowy.
-- Jeśli publikację zatrzyma tryb Auto („Blocked by auto mode”), powiedz to kursantowi jednym zdaniem i spróbuj jeszcze
-  raz.
+- Jeśli publikację zatrzyma tryb Auto z powodem „check had no usable answer” (sprawdzenie nie dało odpowiedzi), powiedz
+  to kursantowi jednym zdaniem i ponów tę samą publikację, najwyżej dwa razy. Przy innym powodzie blokady albo po
+  trzeciej blokadzie nie szukaj innej drogi: przejdź do następnego punktu.
 - Jeśli aplikacja nie może opublikować strony, powiedz to prosto. Plik zostaje w `materialy/udostepnione/`: można go
   otworzyć w przeglądarce, wydrukować albo zapisać jako PDF z okna drukowania przeglądarki.
 
@@ -309,12 +310,13 @@ Podaj link i powiedz kursantowi:
 
 - „Kliknij link, żeby zobaczyć stronę.”
 - „Żeby inni mogli ją otworzyć: u góry strony kliknij „Share” (udostępnij). W „General access” (ogólny dostęp) zmień
-  „Only you” (tylko ja) na „Anyone with the link” (każdy, kto ma link) i potwierdź „Share publicly” (udostępnij
+  „Only you” (tylko Ty) na „Anyone with the link” (każdy, kto ma link) i potwierdź „Share publicly” (udostępnij
   publicznie). Potem kliknij „Copy link” (kopiuj link) i wyślij link, np. e-mailem albo SMS-em.”
 - „Gdy zaktualizuję stronę, ten sam link pokaże nową wersję. Nie trzeba wysyłać go jeszcze raz.”
 - „Strona tylko dla Ciebie, np. lista na Twój telefon? Wtedy nic nie zmieniaj w „Share”: otwórz link na telefonie po
   zalogowaniu się na swoje konto Claude.”
-- „Wyłączenie linku: „Share” → „General access” → „Only you” (tylko ja).”
+- „Wyłączenie linku: „Share” → w „General access” kliknij „Anyone with the link” i wybierz „Only people invited”
+  (tylko zaproszone osoby). Bez zaproszeń stronę widzisz tylko Ty.”
 
 Przy aktualizacji wystarczy jedno zdanie: „Strona pod linkiem jest zaktualizowana.” Jeśli kursant nie widzi zmian,
 niech odświeży stronę na telefonie.

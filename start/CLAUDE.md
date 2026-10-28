@@ -35,7 +35,8 @@
   imionach to dane o zdrowiu: zostają tylko w karcie kuchni, nigdy w tym, co idzie pod link.
 - Przepisy z książek i z internetu są tylko do własnego użytku; pod link idą tylko przepisy własne i rodzinne.
 - Karta kuchni (niżej) mówi, dla kogo i jak gotujemy. Stosuj ją przy przepisach i listach zakupów.
-- Po skończonym etapie albo dużej sprawie zaproponuj nową rozmowę.
+- Po skończonym etapie albo dużej sprawie zaproponuj nową rozmowę: przycisk „New” na górze paska bocznego zakładki Code
+  (nie „New session”).
 
 ## Karta kuchni
 
