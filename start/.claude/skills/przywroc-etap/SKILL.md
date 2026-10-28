@@ -1,6 +1,6 @@
 ---
 name: przywroc-etap
-description: Koło ratunkowe – po zrobieniu kopii wstawia do pracowni gotowy stan etapu budowy przepiśnika (1, 2, 3 albo gotowe) z repozytorium kursu; przepisów, zdjęć ani karty kuchni nie rusza, a poprzednią wersję strony odkłada do Kopie-przepisnika. Używaj, gdy kursant wpisze /przywroc-etap albo prosi „wróć do etapu”, „przywróć etap 2”, „wstaw gotowy etap”, „budowa nie wyszła”, „daj mi gotowy przepiśnik”. Nie używaj, gdy kursant chce sam zbudować etap.
+description: Koło ratunkowe – wstawia gotowy etap budowy przepiśnika (1, 2, 3 albo gotowe). Najpierw robi kopię; przepisów, zdjęć i karty kuchni nie rusza. Także gdy napiszesz „budowa nie wyszła”, „wróć do etapu”, „przywróć etap 2”, „wstaw gotowy etap”, „daj mi gotowy przepiśnik”. Nie do samodzielnej budowy etapu.
 argument-hint: "[1 | 2 | 3 | gotowe]"
 ---
 
@@ -287,6 +287,6 @@ Usuń folder tymczasowy (tylko ten, który utworzyłeś):
 - Podsumowanie po polsku: który etap wstawiony; nazwa pliku kopii i folder z poprzednią wersją strony (oba
   w `Kopie-przepisnika`); co zostało nietknięte (przepisy, zdjęcia kartek, karta kuchni). Po przepisaniu przepisów:
   ile przepisów przepisanych, gdzie leży stary plik i które rozdziały dobrałeś sam.
-- Co dalej: „Zacznij nową rozmowę („New” na górze paska bocznego) – wtedy plan budowy i polecenia wczytają się
-  na nowo.” Przy „gotowe” dodaj: „W nowej
-  rozmowie wpisz /przepis i dołącz zdjęcie kartki albo /zakupy, żeby zrobić listę zakupów.”
+- Co dalej: powiedz, że warto zacząć nową rozmowę przyciskiem „New” na górze paska bocznego, bo wtedy plan budowy
+  i polecenia wczytają się na nowo. Przy „gotowe” dodaj, że w nowej rozmowie można wpisać /przepis i dołączyć
+  zdjęcie kartki albo /zakupy, żeby zrobić listę zakupów.

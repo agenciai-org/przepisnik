@@ -14,7 +14,10 @@
 - Nie instaluj programów i nie uruchamiaj serwerów. Stronę otwieraj jako plik w przeglądarce systemowej
   poleceniem (Windows: `Invoke-Item`, Mac: `open`), nie w podglądzie aplikacji: podgląd nie wczytuje plików obok
   strony (przepisów, zdjęć), a kliknięta ścieżka otwiera właśnie podgląd. Strony w przeglądarce nie widzisz:
-  zapytaj kursanta, co widzi.
+  zapytaj kursanta, co widzi. Gdy polecenie się nie wykona (np. kursant kliknie „Deny”), nie podawaj ścieżki do
+  kliknięcia, tylko powiedz, jak otworzyć stronę samemu: folder pracowni w Eksploratorze plików (Windows) albo
+  w Finderze (Mac), w nim folder ze stroną (np. `aplikacja`) i dwuklik na pliku strony (np. `index.html`; Windows
+  może pokazać go jako `index`).
 - Mac: polecenia systemowe w zsh (`curl`, `unzip`, `ditto`, `sips`). Windows: PowerShell, także gdy jest Git Bash
   (bloków PowerShella nie uruchamiaj w bashu); pisz `curl.exe`, nie `curl`, a ZIP obsługuj przez `Expand-Archive`
   i `Compress-Archive`.

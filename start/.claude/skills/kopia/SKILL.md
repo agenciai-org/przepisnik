@@ -1,6 +1,6 @@
 ---
 name: kopia
-description: Zapisuje całą pracownię – razem z poleceniami (.claude) i kartą kuchni (CLAUDE.md) – w jednym pliku ZIP z datą, w folderze Kopie-przepisnika obok pracowni. Używaj, gdy kursant wpisze /kopia albo prosi „zrób kopię”, „kopia zapasowa”, „zabezpiecz pracownię”, „zapisz wszystko na wszelki wypadek”, a także przed dużą zmianą i w poleceniu /przywroc-etap.
+description: Zapisuje kopię całej pracowni, z poleceniami i kartą kuchni, w pliku z datą w folderze Kopie-przepisnika obok pracowni. Przydaje się przed dużą zmianą. Także gdy napiszesz „zrób kopię”, „kopia zapasowa”, „zabezpiecz pracownię”, „zapisz wszystko na wszelki wypadek”.
 ---
 
 # /kopia – kopia całej pracowni

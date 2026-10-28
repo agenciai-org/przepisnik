@@ -1,6 +1,6 @@
 ---
 name: start
-description: Zakłada albo zmienia kartę kuchni w CLAUDE.md – krótki wywiad, jedno pytanie naraz, z odpowiedziami do kliknięcia. Używaj, gdy kursant wpisze /start albo prosi „wypełnij kartę kuchni”, „zmień kartę kuchni”, „gotuję teraz dla innej liczby osób”, „dopisz alergię”, „dopisz dietę”.
+description: Wypełnia albo zmienia kartę kuchni (dla kogo i jak gotujesz) – kilka krótkich pytań z odpowiedziami do kliknięcia. Także gdy napiszesz „wypełnij kartę kuchni”, „zmień kartę kuchni”, „gotuję teraz dla innej liczby osób”, „dopisz alergię”, „dopisz dietę”.
 ---
 
 # /start – karta kuchni

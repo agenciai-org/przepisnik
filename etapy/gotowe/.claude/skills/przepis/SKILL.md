@@ -1,6 +1,6 @@
 ---
 name: przepis
-description: Dodaje nowy przepis do przepiśnika – ze zdjęcia odręcznej kartki (dołączonego albo leżącego w folderze zrodla), z wklejonego tekstu albo z dyktowania. Odczytuje, nie zgaduje – niepewne słowa i ilości oznacza [?] i dopytuje. Używaj, gdy kursant wpisze /przepis albo prosi „nowy przepis”, „dodaj przepis”, „przepisz kartkę”, „przepis ze zdjęcia kartki”, „przepis od babci”, „mam kilka kartek”.
+description: Dodaje przepis ze zdjęcia odręcznej kartki, z wklejonego tekstu albo z dyktowania. Nie zgaduje – niepewne słowa i ilości oznacza [?] i dopytuje. Także gdy napiszesz „nowy przepis”, „dodaj przepis”, „przepisz kartkę”, „przepis ze zdjęcia kartki”, „przepis od babci”, „mam kilka kartek”.
 argument-hint: "[tytuł albo opis – i dołącz zdjęcie kartki]"
 ---
 

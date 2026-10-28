@@ -1,6 +1,6 @@
 ---
 name: zakupy
-description: Robi listę zakupów z wybranych przepisów przepiśnika – na wybraną liczbę porcji, z sumowaniem tych samych składników i podziałem na działy sklepu – jako jeden plik czytelny na telefonie, z polami do odhaczania. Używaj, gdy kursant wpisze /zakupy albo prosi „lista zakupów”, „zrób listę zakupów”, „co kupić”, „zakupy na weekend”, „zakupy na tydzień”, „lista do sklepu”.
+description: Robi listę zakupów z wybranych przepisów na wybraną liczbę porcji – składniki zsumowane, podzielone na działy sklepu, z polami do odhaczania. Także gdy napiszesz „lista zakupów”, „zrób listę zakupów”, „co kupić”, „zakupy na weekend”, „zakupy na tydzień”, „lista do sklepu”.
 argument-hint: "[przepisy i porcje, np. pierogi na 8 i sernik]"
 ---
 
@@ -213,6 +213,7 @@ data słownie z dniem tygodnia, przepisy z porcjami, działy z pozycjami; numery
 
 - Otwórz listę w przeglądarce systemowej, nie w podglądzie aplikacji (Windows:
   `Invoke-Item -LiteralPath 'materialy\zakupy-RRRR-MM-DD.html'`, Mac: `open materialy/zakupy-RRRR-MM-DD.html`).
+  Zapytaj kursanta, czy widzi listę i czy wygląda dobrze.
 - Podsumowanie po polsku: z jakich przepisów i na ile porcji, ile pozycji, gdzie leży plik; pozycje z `[?]`, jeśli są.
 - Co dalej: „Na telefon: /udostepnij lista zakupów. Na papier: otwórz listę w przeglądarce i wybierz drukowanie
   z menu (Cmd+P na Macu, Ctrl+P na Windows).”

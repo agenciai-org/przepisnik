@@ -1,6 +1,6 @@
 ---
 name: udostepnij
-description: Robi z przepiśnika, jednego przepisu albo listy zakupów stronę z linkiem (artefakt na claude.ai), np. listę zakupów na telefon. Składa jeden plik ze zdjęciami w środku, sprawdza dane prywatne i zawsze pyta przed publikacją; kolejne udostępnienie tej samej rzeczy aktualizuje stronę pod tym samym linkiem. Używaj, gdy kursant wpisze /udostepnij albo prosi „udostępnij”, „daj link”, „wyślij na telefon”, „lista zakupów na telefon”, „pokaż rodzinie”, „zaktualizuj link”.
+description: Zamienia przepiśnik, jeden przepis albo listę zakupów w stronę z linkiem, np. na telefon. Sprawdza dane prywatne i zawsze pyta przed publikacją; ponowne udostępnienie zmienia stronę pod tym samym linkiem. Także gdy napiszesz „udostępnij”, „daj link”, „wyślij na telefon”, „lista zakupów na telefon”, „pokaż rodzinie”, „zaktualizuj link”.
 argument-hint: "[przepiśnik | przepis … | lista zakupów]"
 ---
 
@@ -280,8 +280,8 @@ Select-String -LiteralPath $CEL -Pattern '(src|href)="(?!#|data:)[^"]*"' -AllMat
 
 Powiedz dokładnie to:
 
-„Każdy, kto dostanie ten link, będzie mógł otworzyć stronę, także bez konta Claude i bez logowania. Link można
-przesłać dalej, więc wysyłaj go tylko osobom, które mają zobaczyć tę stronę.”
+„Gdy w „Share” włączysz „Anyone with the link”, każdy, kto dostanie link, otworzy stronę, także bez konta Claude
+i bez logowania. Link można przesłać dalej, więc wysyłaj go tylko osobom, które mają zobaczyć tę stronę.”
 
 Przy pierwszej publikacji dodaj: „Zaraz po publikacji stronę widzisz tylko Ty; innym udostępnisz ją przyciskiem
 „Share”.” i zapytaj: „Publikujemy?” – tak · jeszcze nie.
@@ -312,6 +312,9 @@ Podaj link i powiedz kursantowi:
 - „Żeby inni mogli ją otworzyć: u góry strony kliknij „Share” (udostępnij). W „General access” (ogólny dostęp) zmień
   „Only you” (tylko Ty) na „Anyone with the link” (każdy, kto ma link) i potwierdź „Share publicly” (udostępnij
   publicznie). Potem kliknij „Copy link” (kopiuj link) i wyślij link, np. e-mailem albo SMS-em.”
+- „Jeśli ktoś zobaczy „Sign in to view this page” (zaloguj się, żeby zobaczyć stronę), strona jest jeszcze prywatna:
+  w „Share” wybierz „Anyone with the link”, jak wyżej. Oglądający nie potrzebują konta Claude i nie muszą klikać
+  „Sign in” u góry strony.”
 - „Gdy zaktualizuję stronę, ten sam link pokaże nową wersję. Nie trzeba wysyłać go jeszcze raz.”
 - „Strona tylko dla Ciebie, np. lista na Twój telefon? Wtedy nic nie zmieniaj w „Share”: otwórz link na telefonie po
   zalogowaniu się na swoje konto Claude.”
