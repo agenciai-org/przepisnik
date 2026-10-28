@@ -1,6 +1,6 @@
 ---
 name: zakupy
-description: Robi listę zakupów z wybranych przepisów na wybraną liczbę porcji – składniki zsumowane, podzielone na działy sklepu, z polami do odhaczania. Także gdy napiszesz „lista zakupów”, „zrób listę zakupów”, „co kupić”, „zakupy na weekend”, „zakupy na tydzień”, „lista do sklepu”.
+description: Robi listę zakupów z wybranych przepisów na wybraną liczbę porcji – składniki zsumowane, podzielone na działy sklepu, z polami do odhaczania. Działa też, gdy napiszesz „lista zakupów”, „zrób listę zakupów”, „co kupić”, „zakupy na weekend”, „zakupy na tydzień”, „lista do sklepu”.
 argument-hint: "[przepisy i porcje, np. pierogi na 8 i sernik]"
 ---
 

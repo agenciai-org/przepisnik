@@ -1,6 +1,6 @@
 ---
 name: start
-description: Wypełnia albo zmienia kartę kuchni (dla kogo i jak gotujesz) – kilka krótkich pytań z odpowiedziami do kliknięcia. Także gdy napiszesz „wypełnij kartę kuchni”, „zmień kartę kuchni”, „gotuję teraz dla innej liczby osób”, „dopisz alergię”, „dopisz dietę”.
+description: Wypełnia albo zmienia kartę kuchni (dla kogo i jak gotujesz) – kilka krótkich pytań z odpowiedziami do kliknięcia. Działa też, gdy napiszesz „wypełnij kartę kuchni”, „zmień kartę kuchni”, „gotuję teraz dla innej liczby osób”, „dopisz alergię”, „dopisz dietę”.
 ---
 
 # /start – karta kuchni

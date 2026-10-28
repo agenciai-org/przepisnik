@@ -1,6 +1,6 @@
 ---
 name: kopia
-description: Zapisuje kopię całej pracowni, z poleceniami i kartą kuchni, w pliku z datą w folderze Kopie-przepisnika obok pracowni. Przydaje się przed dużą zmianą. Także gdy napiszesz „zrób kopię”, „kopia zapasowa”, „zabezpiecz pracownię”, „zapisz wszystko na wszelki wypadek”.
+description: Zapisuje kopię całej pracowni, z poleceniami i kartą kuchni, w pliku z datą w folderze Kopie-przepisnika obok pracowni. Przydaje się przed dużą zmianą. Działa też, gdy napiszesz „zrób kopię”, „kopia zapasowa”, „zabezpiecz pracownię”, „zapisz wszystko na wszelki wypadek”.
 ---
 
 # /kopia – kopia całej pracowni

@@ -1,6 +1,6 @@
 ---
 name: pomoc
-description: Pokazuje polecenia tej pracowni z przykładami i podpowiada, co zrobić, gdy coś nie działa. Także gdy napiszesz „jakie są polecenia”, „co mogę tu zrobić”, „pomocy”, „nie działa”, „zawiesiło się”, „skończył się limit”, „nie widzę polecenia”.
+description: Pokazuje polecenia tej pracowni z przykładami i podpowiada, co zrobić, gdy coś nie działa. Działa też, gdy napiszesz „jakie są polecenia”, „co mogę tu zrobić”, „pomocy”, „nie działa”, „zawiesiło się”, „skończył się limit”, „nie widzę polecenia”.
 ---
 
 # /pomoc – polecenia i co robić, gdy coś nie działa
@@ -43,7 +43,7 @@ Pod tabelą pokaż tę listę (po polsku, krótko):
 - **Nowego polecenia nie ma na liście `/`:** zacznij nową rozmowę albo wpisz `/reload-skills`.
 - **Strona w panelu „Browser” jest pusta:** napisz „Otwórz stronę w mojej przeglądarce”. Podgląd w aplikacji
   nie wczytuje przepisów ani zdjęć.
-- **Rodzina widzi „Sign in to view this page”:** strona z linkiem jest jeszcze prywatna. U góry swojej strony kliknij
+- **Rodzina widzi „Sign in to view this page”:** strona z linkiem jest jeszcze prywatna (albo została usunięta). U góry swojej strony kliknij
   „Share”, w „General access” wybierz „Anyone with the link” i potwierdź „Share publicly”. Do oglądania konto Claude
   nie jest potrzebne.
 - **Strona pisze „Nie widzę przepisów”:** napisz „Sprawdź plik z przepisami”. Claude porówna `materialy/przepisy.js`

@@ -1,6 +1,6 @@
 ---
 name: przywroc-etap
-description: Koło ratunkowe – wstawia gotowy etap budowy przepiśnika (1, 2, 3 albo gotowe). Najpierw robi kopię; przepisów, zdjęć i karty kuchni nie rusza. Także gdy napiszesz „budowa nie wyszła”, „wróć do etapu”, „przywróć etap 2”, „wstaw gotowy etap”, „daj mi gotowy przepiśnik”. Nie do samodzielnej budowy etapu.
+description: Koło ratunkowe – wstawia gotowy etap budowy przepiśnika (1, 2, 3 albo gotowe). Najpierw robi kopię; przepisów, zdjęć i karty kuchni nie rusza. Działa też, gdy napiszesz „budowa nie wyszła”, „wróć do etapu”, „przywróć etap 2”, „wstaw gotowy etap”, „daj mi gotowy przepiśnik”. Nie do samodzielnej budowy etapu.
 argument-hint: "[1 | 2 | 3 | gotowe]"
 ---
 

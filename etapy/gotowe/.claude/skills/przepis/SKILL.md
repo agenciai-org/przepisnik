@@ -1,6 +1,6 @@
 ---
 name: przepis
-description: Dodaje przepis ze zdjęcia odręcznej kartki, z wklejonego tekstu albo z dyktowania. Nie zgaduje – niepewne słowa i ilości oznacza [?] i dopytuje. Także gdy napiszesz „nowy przepis”, „dodaj przepis”, „przepisz kartkę”, „przepis ze zdjęcia kartki”, „przepis od babci”, „mam kilka kartek”.
+description: Dodaje przepis ze zdjęcia odręcznej kartki, z wklejonego tekstu albo z dyktowania. Nie zgaduje – niepewne słowa i ilości oznacza [?] i dopytuje. Działa też, gdy napiszesz „nowy przepis”, „dodaj przepis”, „przepisz kartkę”, „przepis ze zdjęcia kartki”, „przepis od babci”, „mam kilka kartek”.
 argument-hint: "[tytuł albo opis – i dołącz zdjęcie kartki]"
 ---
 
