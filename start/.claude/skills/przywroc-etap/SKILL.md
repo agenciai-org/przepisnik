@@ -281,10 +281,12 @@ Usuń folder tymczasowy (tylko ten, który utworzyłeś):
 
 ## Krok 9. Pokaż i podsumuj
 
-- Otwórz `aplikacja/index.html` w podglądzie. Jeśli nie możesz zrobić tego sam, napisz tę ścieżkę w osobnej linii
-  i poproś kursanta, żeby ją kliknął.
+- Otwórz `aplikacja/index.html` w przeglądarce systemowej, nie w podglądzie aplikacji (Windows:
+  `Invoke-Item -LiteralPath 'aplikacja\index.html'`, Mac: `open aplikacja/index.html`). Zapytaj kursanta, czy widzi
+  stronę z przepisami.
 - Podsumowanie po polsku: który etap wstawiony; nazwa pliku kopii i folder z poprzednią wersją strony (oba
   w `Kopie-przepisnika`); co zostało nietknięte (przepisy, zdjęcia kartek, karta kuchni). Po przepisaniu przepisów:
   ile przepisów przepisanych, gdzie leży stary plik i które rozdziały dobrałeś sam.
-- Co dalej: „Zacznij nową rozmowę – wtedy plan budowy i polecenia wczytają się na nowo.” Przy „gotowe” dodaj: „W nowej
+- Co dalej: „Zacznij nową rozmowę („New” na górze paska bocznego) – wtedy plan budowy i polecenia wczytają się
+  na nowo.” Przy „gotowe” dodaj: „W nowej
   rozmowie wpisz /przepis i dołącz zdjęcie kartki albo /zakupy, żeby zrobić listę zakupów.”

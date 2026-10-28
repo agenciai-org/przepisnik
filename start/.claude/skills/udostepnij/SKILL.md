@@ -274,7 +274,9 @@ Select-String -LiteralPath $CEL -Pattern '(src|href)="(?!#|data:)[^"]*"' -AllMat
 - Odwołania do innych plików: dopuszczalne tylko w kodzie silnika, który składa adres zdjęcia (podmienia go
   `podmiana.js`). Inne popraw w `szkielet.html` i złóż plik jeszcze raz.
 - Rozmiar powyżej 10 MB: powtórz zdjęcia z 800 zamiast 1200 albo zapytaj, które zdjęcia pominąć.
-- Pokaż plik w podglądzie (`materialy/udostepnione/<plik>.html`) i sprawdź, że widać treść i zdjęcia.
+- Otwórz plik w przeglądarce systemowej, nie w podglądzie aplikacji (Windows:
+  `Invoke-Item -LiteralPath 'materialy\udostepnione\<plik>.html'`, Mac: `open materialy/udostepnione/<plik>.html`)
+  i zapytaj kursanta, czy widać treść i zdjęcia.
 
 ## Krok 5. Kto zobaczy – i zgoda
 

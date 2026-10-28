@@ -6,8 +6,9 @@ zakupów trafi na telefon.
 
 ## Od czego zacząć
 
-Zacznij nową rozmowę w tej pracowni: polecenia i zasady pracy wczytują się na początku rozmowy, więc w rozmowie,
-w której powstał zestaw, jeszcze nie działają. Potem wpisz `/start`. Claude zada Ci kilka krótkich pytań o Twoją
+Zacznij nową rozmowę w tej pracowni: kliknij „New” na górze paska bocznego zakładki Code (pracownia zostaje
+wybrana). Polecenia i zasady pracy wczytują się na początku rozmowy, więc w rozmowie, w której powstał zestaw,
+jeszcze nie działają. Potem wpisz `/start`. Claude zada Ci kilka krótkich pytań o Twoją
 kuchnię (dla ilu osób gotujesz, czego nie lubicie…) i zapisze odpowiedzi w karcie kuchni. Kartę czyta na początku
 każdej rozmowy.
 

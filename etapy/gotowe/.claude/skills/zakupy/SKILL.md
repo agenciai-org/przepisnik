@@ -211,8 +211,8 @@ data słownie z dniem tygodnia, przepisy z porcjami, działy z pozycjami; numery
 
 ## Krok 6. Pokaż i podsumuj
 
-- Otwórz listę w podglądzie (`materialy/zakupy-RRRR-MM-DD.html`). Jeśli nie możesz zrobić tego sam, napisz tę ścieżkę
-  w osobnej linii i poproś kursanta, żeby ją kliknął.
+- Otwórz listę w przeglądarce systemowej, nie w podglądzie aplikacji (Windows:
+  `Invoke-Item -LiteralPath 'materialy\zakupy-RRRR-MM-DD.html'`, Mac: `open materialy/zakupy-RRRR-MM-DD.html`).
 - Podsumowanie po polsku: z jakich przepisów i na ile porcji, ile pozycji, gdzie leży plik; pozycje z `[?]`, jeśli są.
 - Co dalej: „Na telefon: /udostepnij lista zakupów. Na papier: otwórz listę w przeglądarce i wybierz drukowanie
   z menu (Cmd+P na Macu, Ctrl+P na Windows).”

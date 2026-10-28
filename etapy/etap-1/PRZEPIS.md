@@ -1,7 +1,7 @@
 # Przepis na Domowy przepiśnik
 
 Plan budowy w trzech etapach. Claude buduje jeden etap naraz („Zbuduj etap 1 z przepisu”), a Ty sprawdzasz wynik
-w podglądzie według punktów „Jak sprawdzić”. Gdy etap nie wyjdzie, polecenie `/przywroc-etap` z numerem etapu wstawi
+w przeglądarce według punktów „Jak sprawdzić”. Gdy etap nie wyjdzie, polecenie `/przywroc-etap` z numerem etapu wstawi
 gotowy stan z repozytorium agenciai-org/przepisnik.
 
 **Co budujemy:** domową książkę kucharską, którą otwierasz w przeglądarce. Każdy przepis ma swoją stronę, która
@@ -47,7 +47,8 @@ Każdy przepis ma: `id` (np. `pierogi-babci-zosi`), `tytul`, `podtytul`, `rozdzi
 cudzysłowy, bez przecinka po ostatniej pozycji), żeby Claude mógł bezpiecznie dopisywać przepisy.
 
 **Jak sprawdzić:**
-1. Otwieram `aplikacja/index.html` w podglądzie i widzę stronę „Pierogi babci Zosi”, podobną do wzoru.
+1. Proszę „Otwórz stronę w mojej przeglądarce” (podgląd aplikacji jej nie wczyta) i widzę stronę „Pierogi babci
+   Zosi”, podobną do wzoru.
 2. U góry jest „Rozdział 3 · Obiady” i numer strony, pod tytułem plakietki „4 porcje”, „60 min”, „łatwe”.
 3. Składniki mają ilości po polsku: „500 g mąki pszennej”, „1 jajko”, „2 łyżki masła”.
 4. Na dole widzę „Skąd: od babci Zosi” i „Lepić cienko!”.

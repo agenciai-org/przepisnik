@@ -17,7 +17,8 @@ telefon. Pracujesz w aplikacji Claude (zakładka Code) na Macu albo na Windows, 
 Rozpakuj plik i skopiuj do swojej pracowni całą zawartość folderu `start`, razem z folderem `.claude` (na Macu jest
 ukryty; w Finderze pokażesz go skrótem Cmd+Shift+kropka).
 
-Polecenia i zasady z zestawu działają od następnej rozmowy w pracowni: po skopiowaniu zacznij nową rozmowę.
+Polecenia i zasady z zestawu działają od następnej rozmowy w pracowni: po skopiowaniu zacznij nową rozmowę
+przyciskiem „New” na górze paska bocznego zakładki Code.
 
 ## Co jest w środku
 
@@ -74,12 +75,15 @@ Expand-Archive -LiteralPath "$T\przepisnik.zip" -DestinationPath $T
 # Scalanie bez nadpisywania: robocopy doklada tylko pliki, ktorych w pracowni jeszcze nie ma (takze do istniejacego .claude)
 robocopy (Join-Path $T 'przepisnik-main\start') (Get-Location).Path /E /XC /XN /XO /NFL /NDL /NJH /NJS /NP | Out-Null
 if ($LASTEXITCODE -ge 8) { throw "Kopiowanie zestawu nie wyszlo (robocopy $LASTEXITCODE)" }
+$global:LASTEXITCODE = 0   # kod 1-7 robocopy to sukces; bez tego aplikacja pokazuje czerwone "Failed"
 Get-ChildItem -Force | Select-Object -ExpandProperty Name
 Remove-Item -LiteralPath $T -Recurse -Force
 ```
 
 Po skopiowaniu przeczytaj kursantowi po polsku `README.md` z pracowni i powiedz wprost: polecenia i zasady z zestawu
-zadziałają dopiero w nowej rozmowie w tej pracowni (same polecenia wczytuje też `/reload-skills`, zasad – nie).
+zadziałają dopiero w nowej rozmowie w tej pracowni. Nową rozmowę zaczyna przycisk „New” na górze paska bocznego
+zakładki Code (nie „New session”: to tylko nagłówek pustej rozmowy); pracownia zostaje wybrana. Zapasowo same
+polecenia wczyta `/reload-skills` w tej rozmowie (zasad – nie).
 
 ## Dla Claude'a: nowsze polecenia z zestawu startowego
 

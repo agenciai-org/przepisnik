@@ -11,8 +11,10 @@
 - Zanim poprosisz o zgodę na polecenie systemowe, wyjaśnij jednym zdaniem, co zrobisz i po co.
 - Pracuj tylko w tym folderze. Wyjątki: kopie w folderze `Kopie-przepisnika` obok pracowni (`/kopia`), folder
   tymczasowy systemu i pliki, które kursant sam dołączy albo wskaże.
-- Nie instaluj programów i nie uruchamiaj serwerów. Stronę otwieraj jako plik: w podglądzie aplikacji albo
-  w przeglądarce.
+- Nie instaluj programów i nie uruchamiaj serwerów. Stronę otwieraj jako plik w przeglądarce systemowej
+  poleceniem (Windows: `Invoke-Item`, Mac: `open`), nie w podglądzie aplikacji: podgląd nie wczytuje plików obok
+  strony (przepisów, zdjęć), a kliknięta ścieżka otwiera właśnie podgląd. Strony w przeglądarce nie widzisz:
+  zapytaj kursanta, co widzi.
 - Mac: polecenia systemowe w zsh (`curl`, `unzip`, `ditto`, `sips`). Windows: PowerShell, także gdy jest Git Bash
   (bloków PowerShella nie uruchamiaj w bashu); pisz `curl.exe`, nie `curl`, a ZIP obsługuj przez `Expand-Archive`
   i `Compress-Archive`.

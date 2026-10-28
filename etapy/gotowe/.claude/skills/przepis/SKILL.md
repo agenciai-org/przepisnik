@@ -8,8 +8,8 @@ argument-hint: "[tytuł albo opis – i dołącz zdjęcie kartki]"
 
 Kursant napisał: $ARGUMENTS
 
-Wynik: nowy przepis w `materialy/przepisy.js`, zdjęcie kartki w `zrodla/<nazwa-z-tresci>.jpg`, strona przepisu
-w podglądzie.
+Wynik: nowy przepis w `materialy/przepisy.js`, zdjęcie kartki w `zrodla/<nazwa-z-tresci>.jpg`, przepiśnik otwarty
+w przeglądarce.
 
 ## Zasady
 
@@ -242,8 +242,9 @@ Przy błędzie popraw plik i sprawdź jeszcze raz.
 
 ## Krok 7. Pokaż
 
-Otwórz stronę przepisu w podglądzie: `aplikacja/index.html#przepis/<id>`. Jeśli nie możesz zrobić tego sam, napisz
-w osobnej linii ścieżkę `aplikacja/index.html` i powiedz, żeby kursant kliknął ją, a potem tytuł przepisu w spisie.
+Otwórz `aplikacja/index.html` w przeglądarce systemowej, nie w podglądzie aplikacji (Windows:
+`Invoke-Item -LiteralPath 'aplikacja\index.html'`, Mac: `open aplikacja/index.html`). Powiedz kursantowi, żeby
+kliknął w spisie tytuł nowego przepisu, i zapytaj, czy wszystko się zgadza.
 
 ## Krok 8. Sprzątanie i podsumowanie
 

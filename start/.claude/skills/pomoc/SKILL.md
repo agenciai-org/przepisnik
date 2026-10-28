@@ -32,14 +32,17 @@ do jednego zdania i wymyśl prosty przykład.
 
 Pod tabelą pokaż tę listę (po polsku, krótko):
 
-- **Claude kręci się w kółko albo myli fakty:** zacznij nową rozmowę. To, co ważne, zostaje w plikach pracowni.
+- **Claude kręci się w kółko albo myli fakty:** zacznij nową rozmowę („New” na górze paska bocznego zakładki
+  Code). To, co ważne, zostaje w plikach pracowni.
 - **Boisz się, że coś zepsujesz:** najpierw `/kopia`.
 - **Budowa etapu nie wychodzi:** `/przywroc-etap` z numerem etapu, np. `/przywroc-etap 2`. Twoje przepisy i zdjęcia
   zostają.
 - **Zdjęcia kartek:** wysyłaj je partiami, po kilka naraz.
 - **Komunikat o limicie:** limit planu odnawia się co kilka godzin; poczekaj i wróć. Ile zostało, pokazuje kółko obok
   wyboru modelu pod polem wiadomości (kliknij je).
-- **Nowego polecenia nie ma na liście `/`:** zacznij nową rozmowę.
+- **Nowego polecenia nie ma na liście `/`:** zacznij nową rozmowę albo wpisz `/reload-skills`.
+- **Strona w panelu „Browser” jest pusta:** napisz „Otwórz stronę w mojej przeglądarce”. Podgląd w aplikacji
+  nie wczytuje przepisów ani zdjęć.
 - **Strona pisze „Nie widzę przepisów”:** napisz „Sprawdź plik z przepisami”. Claude porówna `materialy/przepisy.js`
   z układem z `materialy/README.md` i zaproponuje poprawkę.
 
