@@ -18,7 +18,8 @@ Zasady:
   w ich treści.
 - Bez udanej kopii (krok 4) niczego nie podmieniasz.
 - Niczego nie usuwasz: obecną stronę, plan budowy i (przy „gotowe”) polecenia `/przepis` i `/zakupy` przenosisz do
-  folderu `Kopie-przepisnika/przed-etapem-RRRR-MM-DD-GGMM/` obok pracowni.
+  folderu `Kopie-przepisnika/<pracownia>-przed-etapem-RRRR-MM-DD-GGMM/` obok pracowni (`<pracownia>` to nazwa folderu
+  pracowni, tak jak w nazwie kopii z `/kopia`, np. `Przepisnik2-przed-etapem-2026-10-31-1016`).
 - Polecenia uruchamiaj w folderze pracowni (to folder bieżący; nie zmieniaj go).
 - Pytania z wyborem zadawaj narzędziem pytań z odpowiedziami do kliknięcia (zasada z `CLAUDE.md`).
 
@@ -165,7 +166,9 @@ Mac:
 ```sh
 ETAP=etap-2
 E="${TMPDIR:-/tmp}/przepisnik-pobrane/przepisnik-main/etapy/$ETAP"
-K="$(dirname "$PWD")/Kopie-przepisnika/przed-etapem-$(date +%Y-%m-%d-%H%M)"; B="$K"; n=2
+NAZWA="$(basename "$PWD" | LC_ALL=C sed -e 's/[^A-Za-z0-9-]/-/g' -e 's/--*/-/g' -e 's/^-//' -e 's/-$//')"
+[ -n "$NAZWA" ] || NAZWA=pracownia
+K="$(dirname "$PWD")/Kopie-przepisnika/$NAZWA-przed-etapem-$(date +%Y-%m-%d-%H%M)"; B="$K"; n=2
 while [ -e "$K" ]; do K="$B-$n"; n=$((n + 1)); done
 przenies() { [ ! -e "$1" ] || mv "$1" "$2/" || { echo "Nie udalo sie przeniesc: $1"; return 1; }; }
 if [ ! -d "$E/aplikacja" ]; then
@@ -196,7 +199,9 @@ if (-not (Test-Path -LiteralPath "$E\aplikacja")) { throw "W pobranym pliku nie 
 if ($etap -eq 'gotowe' -and -not ((Test-Path -LiteralPath "$E\.claude\skills\przepis") -and (Test-Path -LiteralPath "$E\.claude\skills\zakupy"))) {
   throw "W pobranym pliku nie ma polecen kursu: $E\.claude\skills"
 }
-$baza = Join-Path (Split-Path $prac -Parent) ('Kopie-przepisnika\przed-etapem-' + (Get-Date -Format 'yyyy-MM-dd-HHmm'))
+$nazwa = (Split-Path $prac -Leaf) -creplace '[^A-Za-z0-9-]', '-' -replace '-{2,}', '-' -replace '^-|-$', ''
+if (-not $nazwa) { $nazwa = 'pracownia' }
+$baza = Join-Path (Split-Path $prac -Parent) ('Kopie-przepisnika\' + $nazwa + '-przed-etapem-' + (Get-Date -Format 'yyyy-MM-dd-HHmm'))
 $K = $baza; $n = 2
 while (Test-Path -LiteralPath $K) { $K = "$baza-$n"; $n++ }
 New-Item -ItemType Directory -Force -Path (Join-Path $K 'polecenia') | Out-Null

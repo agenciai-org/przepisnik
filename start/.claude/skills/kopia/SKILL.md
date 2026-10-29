@@ -1,18 +1,22 @@
 ---
 name: kopia
-description: Zapisuje kopię całej pracowni, z poleceniami i kartą kuchni, w pliku z datą w folderze Kopie-przepisnika obok pracowni. Przydaje się przed dużą zmianą. Działa też, gdy napiszesz „zrób kopię”, „kopia zapasowa”, „zabezpiecz pracownię”, „zapisz wszystko na wszelki wypadek”.
+description: Zapisuje kopię całej pracowni, z poleceniami i kartą kuchni, w pliku z nazwą pracowni i datą w folderze Kopie-przepisnika obok pracowni. Przydaje się przed dużą zmianą. Działa też, gdy napiszesz „zrób kopię”, „kopia zapasowa”, „zabezpiecz pracownię”, „zapisz wszystko na wszelki wypadek”.
 ---
 
 # /kopia – kopia całej pracowni
 
-Wynik: plik `przepisnik-RRRR-MM-DD-GGMM.zip` (kolejna kopia w tej samej minucie: `…-2.zip`, `…-3.zip`) w folderze
-`Kopie-przepisnika`, który leży obok pracowni (w tym samym folderze, w którym jest pracownia, np. w Dokumentach). W środku cała pracownia: `CLAUDE.md`, `.claude/`, `materialy/`,
-`zrodla/` i reszta. W samej pracowni niczego nie zmieniasz ani nie usuwasz.
+Wynik: plik `<pracownia>-RRRR-MM-DD-GGMM.zip` w folderze `Kopie-przepisnika`, który leży obok pracowni (w tym samym
+folderze, w którym jest pracownia, np. w Dokumentach). `<pracownia>` to nazwa folderu pracowni, więc kopie z kilku
+pracowni się nie mylą, np. `Przepisnik-2026-10-31-1015.zip` i `Przepisnik2-2026-10-31-1015.zip`. Spacje i polskie
+litery z nazwy folderu zamieniają się w nazwie pliku na `-`; kolejna kopia w tej samej minucie dostaje końcówkę
+`…-2.zip`, `…-3.zip`. W środku cała pracownia: `CLAUDE.md`, `.claude/`, `materialy/`, `zrodla/` i reszta. W samej
+pracowni niczego nie zmieniasz ani nie usuwasz.
 
 ## Krok 1. Zapowiedź
 
-Jedno zdanie: „Zapiszę całą pracownię w jednym pliku ZIP z dzisiejszą datą, w folderze Kopie-przepisnika obok
-pracowni; w pracowni niczego nie zmieniam.” Nie pytaj o zgodę osobno – jeśli trzeba, poprosi o nią aplikacja.
+Jedno zdanie: „Zapiszę całą pracownię w jednym pliku ZIP z nazwą pracowni i dzisiejszą datą, w folderze
+Kopie-przepisnika obok pracowni; w pracowni niczego nie zmieniam.” Nie pytaj o zgodę osobno – jeśli trzeba, poprosi
+o nią aplikacja.
 
 ## Krok 2. Rozmiar pracowni
 
@@ -31,7 +35,9 @@ Mac:
 ```sh
 KOPIE="$(dirname "$PWD")/Kopie-przepisnika"
 mkdir -p "$KOPIE"
-BAZA="$KOPIE/przepisnik-$(date +%Y-%m-%d-%H%M)"
+NAZWA="$(basename "$PWD" | LC_ALL=C sed -e 's/[^A-Za-z0-9-]/-/g' -e 's/--*/-/g' -e 's/^-//' -e 's/-$//')"
+[ -n "$NAZWA" ] || NAZWA=pracownia
+BAZA="$KOPIE/$NAZWA-$(date +%Y-%m-%d-%H%M)"
 PLIK="$BAZA.zip"; n=2
 while [ -e "$PLIK" ]; do PLIK="$BAZA-$n.zip"; n=$((n + 1)); done
 ditto -c -k --sequesterRsrc --keepParent "$PWD" "$PLIK"
@@ -49,7 +55,9 @@ Add-Type -AssemblyName System.IO.Compression, System.IO.Compression.FileSystem
 $prac = (Get-Location).Path
 $kopie = Join-Path (Split-Path $prac -Parent) 'Kopie-przepisnika'
 New-Item -ItemType Directory -Force -Path $kopie | Out-Null
-$baza = Join-Path $kopie ('przepisnik-' + (Get-Date -Format 'yyyy-MM-dd-HHmm'))
+$nazwa = (Split-Path $prac -Leaf) -creplace '[^A-Za-z0-9-]', '-' -replace '-{2,}', '-' -replace '^-|-$', ''
+if (-not $nazwa) { $nazwa = 'pracownia' }
+$baza = Join-Path $kopie ($nazwa + '-' + (Get-Date -Format 'yyyy-MM-dd-HHmm'))
 $plik = "$baza.zip"; $n = 2
 while (Test-Path -LiteralPath $plik) { $plik = "$baza-$n.zip"; $n++ }
 function IleClaude($p) {
@@ -76,7 +84,7 @@ if ($ile -eq 0) {
 
 ## Krok 5. Podsumowanie
 
-- Co zrobione i gdzie: „Kopia gotowa: `przepisnik-2026-10-31-1015.zip` (8,8 MB) w folderze `Kopie-przepisnika` obok
+- Co zrobione i gdzie: „Kopia gotowa: `Przepisnik-2026-10-31-1015.zip` (8,8 MB) w folderze `Kopie-przepisnika` obok
   pracowni. Jest w niej wszystko, także polecenia i karta kuchni.”
 - Jedno pytanie: „Otworzyć folder z kopiami w Finderze?” (na Windows: „w Eksploratorze plików?”) – tak · nie. Po
   „tak”: Mac `open "<folder z kopiami>"`, Windows `Invoke-Item -LiteralPath "<folder z kopiami>"`.

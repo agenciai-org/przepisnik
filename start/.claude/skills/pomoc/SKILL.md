@@ -19,7 +19,7 @@ Pokaż tabelę: Polecenie · Co robi (jedno zdanie) · Przykład. Opisy znanych 
 |---|---|---|
 | `/start` | zapisuje albo zmienia kartę kuchni | `/start` |
 | `/pomoc` | pokazuje tę listę | `/pomoc` |
-| `/kopia` | zapisuje całą pracownię w pliku ZIP z datą, w folderze `Kopie-przepisnika` obok pracowni | `/kopia` |
+| `/kopia` | zapisuje całą pracownię w pliku ZIP z nazwą pracowni i datą, w folderze `Kopie-przepisnika` obok pracowni | `/kopia` |
 | `/przywroc-etap` | wstawia gotowy etap budowy z kursu (najpierw robi kopię); przepisów i zdjęć nie rusza | `/przywroc-etap 2` |
 | `/udostepnij` | robi stronę z linkiem: cały przepiśnik, jeden przepis albo listę zakupów; przed publikacją pyta | `/udostepnij lista zakupów` |
 | `/przepis` | dodaje przepis ze zdjęcia kartki, z tekstu albo z dyktowania | `/przepis` i dołączone zdjęcie kartki |

@@ -32,7 +32,7 @@ Polecenie to jedno słowo z ukośnikiem. Wpisz `/` w polu wiadomości i wybierz 
 |---|---|---|
 | `/start` | zapisuje albo zmienia kartę kuchni | `/start` |
 | `/pomoc` | pokazuje polecenia i podpowiada, co zrobić, gdy coś nie działa | `/pomoc` |
-| `/kopia` | zapisuje całą pracownię w jednym pliku ZIP z datą | `/kopia` |
+| `/kopia` | zapisuje całą pracownię w jednym pliku ZIP z nazwą pracowni i datą | `/kopia` |
 | `/przywroc-etap` | wstawia gotowy etap budowy z kursu (koło ratunkowe); Twoich przepisów nie rusza | `/przywroc-etap 2` |
 | `/udostepnij` | robi stronę z linkiem, np. listę zakupów na telefon; przed publikacją zawsze pyta | `/udostepnij lista zakupów` |
 
