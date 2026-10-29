@@ -43,7 +43,7 @@ while [ -e "$PLIK" ]; do PLIK="$BAZA-$n.zip"; n=$((n + 1)); done
 ditto -c -k --sequesterRsrc --keepParent "$PWD" "$PLIK"
 echo "Plik: $PLIK"
 echo "Rozmiar: $(du -h "$PLIK" | cut -f1)"
-echo "Pozycji z .claude: $(unzip -l "$PLIK" | grep -v __MACOSX | grep -c '/\.claude/')"
+echo "Pozycji z .claude: $(unzip -l "$PLIK" | LC_ALL=C grep -av __MACOSX | LC_ALL=C grep -ac '/\.claude/')"
 ```
 
 Windows (PowerShell):
