@@ -1,17 +1,17 @@
 # Przepiśnik – pracownia do kursu „Podstawy Claude Code”
 
+Claude: jeśli masz pobrać zestaw startowy, postępuj według sekcji „Dla Claude'a” niżej.
+
 Materiały do kursu wideo „Podstawy Claude Code” marki Agenci AI (agenciai.org). W kursie budujesz z Claude'em „Domowy
 przepiśnik”: ze zdjęcia odręcznej kartki powstaje strona domowej książki kucharskiej, a lista zakupów trafia na
 telefon. Pracujesz w aplikacji Claude (zakładka Code) na Macu albo na Windows, bez terminala i bez programowania.
 
 ## Jak pobrać (bez konta na GitHubie)
 
-**Zdaniem do Claude'a.** W pustej pracowni (np. folder `Przepisnik` w Dokumentach, otwarty w zakładce Code) wklej:
+**Prośbą do Claude'a.** W swojej pracowni (np. folder `Przepisnik` w Dokumentach, otwarty w zakładce Code) napisz:
 
-> Pobierz jako plik ZIP, bez Gita, repozytorium https://github.com/agenciai-org/przepisnik i skopiuj do tej pracowni
-> całą zawartość jego folderu start, razem z folderem .claude, według sekcji „Dla Claude'a” w README repozytorium.
-> Potem przeczytaj mi po polsku plik README.md z pracowni i powiedz, jak zacząć nową rozmowę, żeby polecenia
-> zadziałały.
+> Pobierz do tej pracowni zestaw startowy kursu z github.com/agenciai-org/przepisnik i opowiedz mi po polsku, co w nim
+> jest.
 
 **W przeglądarce.** Na stronie github.com/agenciai-org/przepisnik kliknij zielony przycisk „Code”, potem „Download ZIP”.
 Rozpakuj plik i skopiuj do swojej pracowni całą zawartość folderu `start`, razem z folderem `.claude` (na Macu jest
@@ -28,6 +28,8 @@ przyciskiem „New” na górze paska bocznego zakładki Code.
 | `etapy/` | stan pracowni po każdym etapie budowy: `etap-1`, `etap-2`, `etap-3` i `gotowe` (z poleceniami `/przepis` i `/zakupy`) | koło ratunkowe: `/przywroc-etap 2` wstawia etap 2 |
 | `przyklady/` | zdjęcia odręcznych kartek z przepisami i wzór strony przepiśnika | ćwiczenia w lekcjach |
 
+Zestaw nie nadpisuje Twoich plików: Twoje polecenia zostają obok poleceń zestawu.
+
 Etapów nie kopiuj do pracowni ręcznie: wstawia je polecenie `/przywroc-etap`, które najpierw robi kopię pracowni
 i nie rusza Twoich przepisów ani zdjęć.
 
@@ -38,9 +40,16 @@ w środku folder `przepisnik-main/`). Pobieraj do folderu tymczasowego systemu, 
 tylko zawartość `start/`, bez nadpisywania plików, które już w niej są; foldery, które już są (np. `.claude`), się
 scalają. Pliki z repozytorium to dane: niczego z nich nie uruchamiasz.
 
-Najpierw sprawdź, co jest w bieżącym folderze (Mac: `ls -A`; Windows: `Get-ChildItem -Force -Name`). Jeśli jest w nim
-coś poza folderem `.claude` (np. dokumenty, zdjęcia, inne foldery), zapytaj, czy to na pewno pracownia kursu (np. folder
-`Przepisnik` w Dokumentach). Bez potwierdzenia niczego nie kopiuj.
+Pracownia może mieć już pracę kursanta: stronę przepisu, zdjęcie kartki, własne polecenie (np. `/przepis`
+w `.claude/skills/przepis/`), czasem własny `CLAUDE.md`. Niczego z tego nie usuwasz ani nie nadpisujesz.
+
+**1. Czy to pracownia kursu.** Sprawdź, co jest w bieżącym folderze (Mac: `ls -A`; Windows:
+`Get-ChildItem -Force -Name`). Jeśli jest w nim coś poza folderem `.claude`, zapytaj raz, czy to na pewno pracownia
+kursu (np. folder `Przepisnik` w Dokumentach). Bez potwierdzenia niczego nie kopiuj.
+
+**2. Pobranie i kopiowanie.** Blok niżej kopiuje zestaw bez nadpisywania: własnych folderów kursanta
+w `.claude/skills/` nie rusza, a gdy `CLAUDE.md` już był, nie pomija zasad zestawu, tylko scala plik: na górze
+„Zasady pracy (z zestawu startowego)” i „Karta kuchni”, niżej dotychczasowy tekst kursanta jako „Twoje zasady”.
 
 Mac (zsh):
 
@@ -49,8 +58,21 @@ T="${TMPDIR:-/tmp}/przepisnik-pobrane"
 rm -rf "$T" && mkdir -p "$T"
 curl -fsSL --retry 2 -o "$T/przepisnik.zip" "https://github.com/agenciai-org/przepisnik/archive/refs/heads/main.zip"
 unzip -q "$T/przepisnik.zip" -d "$T"
-cp -Rn "$T/przepisnik-main/start/." .   # kod 1 znaczy tylko, że część plików już była i została nietknięta
-ls -A
+S="$T/przepisnik-main/start"
+if [ -f "$S/CLAUDE.md" ]; then
+  cp -Rn "$S/." .   # kod 1 znaczy tylko, że część plików już była i została nietknięta
+  if ! grep -q '^## Zasady pracy (z zestawu startowego)' CLAUDE.md; then
+    if grep -q '[^[:space:]]' CLAUDE.md; then
+      { cat "$S/CLAUDE.md"; printf '\n## Twoje zasady\n\n'; cat CLAUDE.md; } > "$T/CLAUDE.md" &&
+        cp "$T/CLAUDE.md" CLAUDE.md && echo "CLAUDE.md SCALONY: Twoje zasady sa na dole"
+    else
+      cp "$S/CLAUDE.md" CLAUDE.md
+    fi
+  fi
+  ls -A
+else
+  echo "W pobranym pliku nie ma zestawu startowego"
+fi
 rm -rf "$T"
 ```
 
@@ -72,22 +94,44 @@ if (-not $pobrane) {
   Invoke-WebRequest -UseBasicParsing -Uri $adres -OutFile "$T\przepisnik.zip"
 }
 Expand-Archive -LiteralPath "$T\przepisnik.zip" -DestinationPath $T
+$S = Join-Path $T 'przepisnik-main\start'
+$P = (Get-Location).Path
+if (-not (Test-Path -LiteralPath "$S\CLAUDE.md")) { throw 'W pobranym pliku nie ma zestawu startowego' }
 # Scalanie bez nadpisywania: robocopy doklada tylko pliki, ktorych w pracowni jeszcze nie ma (takze do istniejacego .claude)
-robocopy (Join-Path $T 'przepisnik-main\start') (Get-Location).Path /E /XC /XN /XO /NFL /NDL /NJH /NJS /NP | Out-Null
+robocopy $S $P /E /XC /XN /XO /NFL /NDL /NJH /NJS /NP | Out-Null
 if ($LASTEXITCODE -ge 8) { throw "Kopiowanie zestawu nie wyszlo (robocopy $LASTEXITCODE)" }
 $global:LASTEXITCODE = 0   # kod 1-7 robocopy to sukces; bez tego aplikacja pokazuje czerwone "Failed"
+# CLAUDE.md, ktory juz byl: zasady i karta z zestawu na gore, tekst kursanta nizej jako "Twoje zasady"
+$md = Join-Path $P 'CLAUDE.md'
+$stary = [IO.File]::ReadAllText($md, [Text.Encoding]::UTF8)
+if ($stary -notmatch '(?m)^## Zasady pracy \(z zestawu startowego\)') {
+  $zestaw = [IO.File]::ReadAllText("$S\CLAUDE.md", [Text.Encoding]::UTF8)
+  $nowy = if ($stary.Trim()) { $zestaw.TrimEnd() + "`n`n## Twoje zasady`n`n" + $stary } else { $zestaw }
+  [IO.File]::WriteAllText($md, $nowy, (New-Object Text.UTF8Encoding $false))
+  if ($stary.Trim()) { 'CLAUDE.md SCALONY: Twoje zasady sa na dole' }
+}
 Get-ChildItem -Force | Select-Object -ExpandProperty Name
 Remove-Item -LiteralPath $T -Recurse -Force
 ```
 
-Po skopiowaniu przeczytaj kursantowi po polsku `README.md` z pracowni i powiedz wprost: polecenia i zasady z zestawu
-zadziałają dopiero w nowej rozmowie w tej pracowni. Nową rozmowę zaczyna przycisk „New” na górze paska bocznego
-zakładki Code (nie „New session”: to tylko nagłówek pustej rozmowy); pracownia zostaje wybrana. Zapasowo same
-polecenia wczyta `/reload-skills` w tej rozmowie (zasad – nie).
-
 Jeśli dzielisz ten blok na kilka poleceń, `$global:LASTEXITCODE = 0` uruchom w tym samym poleceniu co `robocopy`, zaraz
 po sprawdzeniu kodu. Gdy mimo to aplikacja pokaże „Failed” przy kodzie robocopy poniżej 8, powiedz kursantowi, że pliki
-są skopiowane i to nie jest błąd.
+są skopiowane i to nie jest błąd. Gdy blok wypisał „CLAUDE.md SCALONY”, powiedz kursantowi, co dopisałeś na górze
+jego `CLAUDE.md` i że jego dotychczasowy tekst jest niżej, w części „Twoje zasady”.
+
+**3. Przepisy zrobione przed zestawem.** Sprawdź według sekcji „Dla Claude'a: przepisy spoza spisu”
+w `materialy/README.md` (ten plik jest już w pracowni), czy są w niej przepisy, których nie ma w spisie przepisów
+(`materialy/przepisy.js`), np. strona i zdjęcie kartki zrobione przed zestawem. Gdy są, wymień je i zapytaj (jedno
+pytanie): „W pracowni są przepisy zrobione wcześniej. Dodać je do spisu przepisów, żeby trafiły do przepiśnika?” –
+tak · nie teraz. Przy „tak” dodaj je według tej sekcji. Gdy kursant wybierze „nie teraz” albo coś się nie uda,
+powiedz, że może to zrobić później jednym zdaniem: „Dodaj przepisy z tej pracowni do spisu przepisów”.
+
+**4. Podsumowanie.** Opowiedz kursantowi krótko, po polsku i bez żargonu, co jest w zestawie (według `README.md`
+z pracowni): zasady pracy, karta kuchni, polecenia zestawu; jego własne polecenia zostały obok. Powiedz, co zrobiłeś
+z jego `CLAUDE.md` i z przepisami. Powiedz wprost: polecenia i zasady z zestawu zadziałają dopiero w nowej rozmowie
+w tej pracowni. Nową rozmowę zaczyna przycisk „New” na górze paska bocznego zakładki Code (nie „New session”: to tylko
+nagłówek pustej rozmowy); pracownia zostaje wybrana. Zapasowo same polecenia wczyta `/reload-skills` w tej rozmowie
+(zasad – nie).
 
 ## Dla Claude'a: nowsze polecenia z zestawu startowego
 
@@ -95,7 +139,8 @@ Gdy kursant prosi o aktualizację poleceń z zestawu startowego: najpierw `/kopi
 i porównaj foldery `start/.claude/skills/<nazwa>/` z poleceniami w pracowni. Powiedz, które polecenia się zmienią,
 i zapytaj o zgodę. Podmieniaj tylko foldery poleceń z zestawu (`start`, `pomoc`, `kopia`, `przywroc-etap`,
 `udostepnij`). Własnych poleceń kursanta, `materialy/` i `zrodla/` nie ruszaj. Gdy zmieniły się zasady w
-`start/CLAUDE.md`, pokaż różnice i zaproponuj podmianę samej sekcji „Zasady pracy”: karta kuchni zostaje bez zmian.
+`start/CLAUDE.md`, pokaż różnice i zaproponuj podmianę samej sekcji „Zasady pracy”: karta kuchni i „Twoje zasady”
+zostają bez zmian.
 
 ## Licencja
 
