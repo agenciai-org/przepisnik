@@ -34,7 +34,7 @@ a zmiana zadziała od nowej rozmowy.”
 
 ## Krok 3. Gdy coś nie działa
 
-Pod tabelą pokaż tę listę (po polsku, krótko):
+Pod tabelami i zdaniem o `SKILL.md` pokaż tę listę (po polsku, krótko):
 
 - **Claude kręci się w kółko albo myli fakty:** zacznij nową rozmowę („New” na górze paska bocznego zakładki
   Code). To, co ważne, zostaje w plikach pracowni.
