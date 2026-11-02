@@ -17,7 +17,7 @@ każdej rozmowy.
 | Co | Po co |
 |---|---|
 | `CLAUDE.md` | zasady pracy dla Claude'a i Twoja karta kuchni |
-| `.claude/` | polecenia (folder z kropką na początku nazwy; na Macu jest ukryty, nie musisz go otwierać) |
+| `.claude/` | polecenia (folder z kropką na początku nazwy; na Macu jest ukryty: pokażesz go skrótem Cmd+Shift+kropka) |
 | `materialy/` | tu Claude zapisuje przepisy, listy zakupów i to, co udostępniasz |
 | `zrodla/` | tu trafiają zdjęcia kartek z przepisami (oryginały, nic ich nie zmienia) |
 | `README.md` | ten plik |
@@ -33,10 +33,10 @@ Polecenie to jedno słowo z ukośnikiem. Wpisz `/` w polu wiadomości i wybierz 
 | `/start` | zapisuje albo zmienia kartę kuchni | `/start` |
 | `/pomoc` | pokazuje polecenia i podpowiada, co zrobić, gdy coś nie działa | `/pomoc` |
 | `/kopia` | zapisuje całą pracownię w jednym pliku ZIP z nazwą pracowni i datą | `/kopia` |
-| `/przywroc-etap` | wstawia gotowy etap budowy z kursu (koło ratunkowe); Twoich przepisów nie rusza | `/przywroc-etap 2` |
+| `/przywroc-etap` | wstawia gotowy etap budowy z kursu (koło ratunkowe); Twoich przepisów ani poleceń nie rusza | `/przywroc-etap 2` |
 | `/udostepnij` | robi stronę z linkiem, np. listę zakupów na telefon; przed publikacją zawsze pyta | `/udostepnij lista zakupów` |
 
-Później w kursie dojdą Twoje własne polecenia, na przykład `/przepis` i `/zakupy`.
+Twoje własne polecenia (np. `/przepis`) leżą obok, w `.claude/skills/`; zestaw ich nie zmienia. Później dojdzie `/zakupy`.
 
 ## Gdzie co leży
 
