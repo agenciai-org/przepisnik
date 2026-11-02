@@ -11,22 +11,26 @@ Sprawdź folder `.claude/skills/`: każdy podfolder z plikiem `SKILL.md` to jedn
 z nagłówka `SKILL.md`, a gdy go nie ma – nazwa podfolderu. Pokaż tylko te polecenia – nie dopisuj poleceń, których tu
 nie ma.
 
-## Krok 2. Tabela
+## Krok 2. Tabela w dwóch częściach
 
-Pokaż tabelę: Polecenie · Co robi (jedno zdanie) · Przykład. Opisy znanych poleceń:
+Pokaż dwie tabele: Polecenie · Co robi (jedno zdanie) · Przykład.
+
+**Polecenia z zestawu** – te, które przyszły z zestawem startowym kursu. Opisy (pokaż tylko te, które są w pracowni):
 
 | Polecenie | Co robi | Przykład |
 |---|---|---|
 | `/start` | zapisuje albo zmienia kartę kuchni | `/start` |
 | `/pomoc` | pokazuje tę listę | `/pomoc` |
 | `/kopia` | zapisuje całą pracownię w pliku ZIP z nazwą pracowni i datą, w folderze `Kopie-przepisnika` obok pracowni | `/kopia` |
-| `/przywroc-etap` | wstawia gotowy etap budowy z kursu (najpierw robi kopię); przepisów i zdjęć nie rusza | `/przywroc-etap 2` |
+| `/przywroc-etap` | wstawia gotowy etap budowy z kursu (najpierw robi kopię); przepisów, zdjęć ani Twoich poleceń nie rusza | `/przywroc-etap 2` |
 | `/udostepnij` | robi stronę z linkiem: cały przepiśnik, jeden przepis albo listę zakupów; przed publikacją pyta | `/udostepnij lista zakupów` |
-| `/przepis` | dodaje przepis ze zdjęcia kartki, z tekstu albo z dyktowania | `/przepis` i dołączone zdjęcie kartki |
-| `/zakupy` | robi listę zakupów z wybranych przepisów, z podziałem na działy sklepu | `/zakupy pierogi na 8 osób` |
 
-Dla innych poleceń (np. własnych, zrobionych przez kursanta) weź opis z pola `description` w ich `SKILL.md`, skróć go
-do jednego zdania i wymyśl prosty przykład.
+**Twoje polecenia** – wszystkie pozostałe, np. `/przepis` i `/zakupy`. Opis weź z pola `description` w ich własnym
+`SKILL.md`, a gdy go nie ma, z pierwszych zdań pliku (przeczytaj plik, nie zgaduj), skróć go do jednego zdania i dopisz prosty przykład. Gdy takich poleceń nie
+ma, napisz: „Jeszcze nie masz własnych poleceń.”
+
+Pod tabelami jedno zdanie: „Każde polecenie to plik `SKILL.md` w `.claude/skills/`; zmienisz je zwykłym zdaniem,
+a zmiana zadziała od nowej rozmowy.”
 
 ## Krok 3. Gdy coś nie działa
 
