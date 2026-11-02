@@ -53,7 +53,7 @@ Gdy kursant prosi o dodanie przepisów z pracowni do spisu (np. „Dodaj przepis
 albo po pobraniu zestawu startowego zgodził się na to, najpierw znajdź strony przepisów i zdjęcia kartek:
 
 - Mac: `find . \( -path ./.claude -o -path ./aplikacja -o -path ./robocze \) -prune -o -type f \( -iname '*.htm*' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.heic' -o -iname '*.webp' \) -print`
-- Windows: `$P = (Get-Location).Path; Get-ChildItem -LiteralPath $P -Recurse -File -Force -Include *.htm*, *.jpg, *.jpeg, *.png, *.heic, *.webp | Where-Object { $_.FullName.Substring($P.Length + 1) -notmatch '^(\.claude|aplikacja|robocze)\\' } | ForEach-Object { $_.FullName.Substring($P.Length + 1) }`
+- Windows: `$P = (Get-Location).Path; Get-ChildItem -LiteralPath $P -Recurse -File -Force | Where-Object { $_.Extension -match '^\.(html?|jpe?g|png|heic|webp)$' -and $_.FullName.Substring($P.Length + 1) -notmatch '^(\.claude|aplikacja|robocze)\\' } | ForEach-Object { $_.FullName.Substring($P.Length + 1) }`
 
 Pomiń to, co już jest w spisie (zdjęcie wpisane w polu `kartka` jakiegoś przepisu), i to, co nie jest przepisem
 (np. listy zakupów `materialy/zakupy-*.html`, zdjęcia potraw z pola `zdjecie`). Z pozostałymi:
